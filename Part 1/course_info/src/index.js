@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 
 const Header = (props) => {
@@ -10,8 +10,8 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
-  return(
+const Part = (props) => {
+  return (
     <div>
       <p>
         {props.part1} {props.excercises1}
@@ -22,6 +22,16 @@ const Content = (props) => {
       <p>
         {props.part3} {props.excercises3}
       </p>
+    </div>
+  )
+}
+
+const Content = (props) => {
+  return(
+    <div>
+      <Part part1={props.part1} excercises1={props.excercises1}/>
+      <Part part2={props.part2} excercises2={props.excercises2}/>
+      <Part part3={props.part3} excercises3={props.excercises3}/>
     </div>
   )
 }
