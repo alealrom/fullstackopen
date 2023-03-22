@@ -2,10 +2,25 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const Statistics = (props) => {
+const Statistics = ({good, neutral, bad, allFeedbacks, average, positive}) => {
+  if (allFeedbacks === 0 || isNaN(average) || isNaN(positive)){
+    return(
+      <main>
+        <h2>Statistics</h2>
+        <p>No feedback given.</p>
+      </main>
+    )
+  }
+
   return (
     <main>
-      <p>{props.text} {props.value}</p>
+      <h2>Statistics</h2>
+      <p>Good {good}</p>
+      <p>Neutral {neutral}</p>
+      <p>Bad {bad}</p>
+      <p>All {allFeedbacks}</p>
+      <p>Average {average}</p>
+      <p>Positive {positive + "%"}</p>
     </main>
   );
 };
@@ -36,12 +51,7 @@ return (
     <button onClick={handleGoodClick}>Good</button>
     <button onClick={handleNeutralClick}>Neutral</button>
     <button onClick={handleBadClick}>Bad</button>
-    <Statistics text='Good' value={good}/>
-    <Statistics text='Neutral' value={neutral}/>
-    <Statistics text='Bad' value={bad}/>
-    <Statistics text='All' value={allFeedbacks}/>
-    <Statistics text='Average' value={average}/>
-    <Statistics text='Positive' value={positive + "%"}/>
+    <Statistics good={good} neutral={neutral} bad={bad} allFeedbacks={allFeedbacks} average={average} positive={positive}/>
   </main>
 )
 }
